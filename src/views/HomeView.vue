@@ -5,14 +5,18 @@
 
       <!-- Drag and Drop Zone -->
       <div class="drop-zone" @dragover.prevent @drop.prevent="handleDrop">
-        <!-- <el-switch
-          v-model="selectlang"
-          class="mt-2"
-          style="margin-left: 24px"
-          inline-prompt
-          :active-icon="Check"
-          :inactive-icon="Close"
-        /> -->
+        <el-form-item label="Language">
+          <el-select
+            v-model="selectedLang"
+            placeholder="Select language"
+            style="width: 100%"
+          >
+            <el-option label="Khmer + English" value="eng+khm" />
+            <el-option label="Khmer Only" value="khm" />
+            <el-option label="English Only" value="eng" />
+          </el-select>
+        </el-form-item>
+
         <el-upload
           class="upload"
           drag
@@ -62,6 +66,7 @@ import { ref } from "vue";
 import { ElMessage } from "element-plus";
 import { UploadFilled } from "@element-plus/icons-vue";
 import { recognize } from "tesseract.js";
+const selectedLang = ref("eng+khm");
 
 const text = ref("");
 const loading = ref(false);
@@ -99,7 +104,7 @@ const recognizeTextFromImage = async (imageFile: File) => {
   try {
     const {
       data: { text: recognizedText },
-    } = await recognize(imageFile, "eng+khm", {
+    } = await recognize(imageFile, selectedLang.value, {
       logger: (m) => console.log(m),
     });
 
