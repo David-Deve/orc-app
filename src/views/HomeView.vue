@@ -58,6 +58,10 @@
         </el-button>
       </div>
     </el-card>
+    <footer class="footer">
+      Made with ❤️ by
+      <a href="https://github.com/David-Deve" target="_blank">David</a>
+    </footer>
   </div>
 </template>
 
@@ -160,5 +164,22 @@ const copyText = async () => {
 .copy-btn {
   margin-top: 25px;
   float: none;
+}
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+.footer a {
+  color: #409eff;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
 }
 </style>
