@@ -71,7 +71,6 @@ const selectedLang = ref("eng+khm");
 const text = ref("");
 const loading = ref(false);
 const previewUrl = ref<string | null>(null);
-const selectlang = ref<string>("");
 const handleFileChange = async (file: any) => {
   const rawFile = file.raw || file;
   if (rawFile && rawFile.type.startsWith("image/")) {
